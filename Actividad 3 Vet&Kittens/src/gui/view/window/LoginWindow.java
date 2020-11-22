@@ -1,0 +1,183 @@
+package gui.view.window;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import gui.controller.ActionCommands;
+import gui.controller.VKController;
+import gui.view.component.JFocusField;
+import gui.view.component.JFocusPasswordField;
+
+import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.border.SoftBevelBorder;
+
+
+import javax.swing.border.BevelBorder;
+
+public class LoginWindow extends JDialog {
+	private static final long serialVersionUID = -1711452464721128133L;
+
+	public JFocusField ffUser;
+	public JFocusPasswordField ffPassword;
+	private final JPanel contentPanel = new JPanel();
+	public JButton mainButton;
+
+	public LoginWindow(VKController controller) {
+
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setModal(true);
+		setBounds(100, 100, 450, 354);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(0, 51, 51));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLocationRelativeTo(null); // centra ventana
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+
+		JLabel lbLoginBanner = new JLabel("LOGIN");
+		lbLoginBanner.setBackground(SystemColor.textHighlight);
+		lbLoginBanner.setOpaque(true);
+		lbLoginBanner.setFont(new Font("Miriam Libre", Font.ITALIC, 30));
+		lbLoginBanner.setHorizontalAlignment(SwingConstants.CENTER);
+		lbLoginBanner.setBounds(0, 0, 444, 65);
+		contentPanel.add(lbLoginBanner);
+
+		JLabel lbUser = new JLabel("User");
+		lbUser.setToolTipText("Ask you cat");
+		lbUser.setBackground(SystemColor.textHighlight);
+		lbUser.setFont(new Font("Miriam Libre", Font.PLAIN, 20));
+		lbUser.setHorizontalAlignment(SwingConstants.CENTER);
+		lbUser.setOpaque(true);
+		lbUser.setBounds(10, 87, 199, 51);
+		contentPanel.add(lbUser);
+
+		ffUser = new JFocusField(Color.orange); // focus naranja para para distinguirlo del fondo verde
+		ffUser.setBounds(225, 87, 199, 51);
+		contentPanel.add(ffUser);
+		ffUser.setColumns(10);
+
+		JLabel lbPassword = new JLabel("Password");
+		lbPassword.setToolTipText("");
+		lbPassword.setOpaque(true);
+		lbPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lbPassword.setFont(new Font("Miriam Libre", Font.PLAIN, 20));
+		lbPassword.setBackground(SystemColor.textHighlight);
+		lbPassword.setBounds(10, 153, 199, 51);
+		contentPanel.add(lbPassword);
+
+		ffPassword = new JFocusPasswordField(Color.ORANGE);
+		ffPassword.setBounds(225, 153, 199, 51);
+		contentPanel.add(ffPassword);
+
+		JButton btnMIAU = new JButton("MIAU");
+		btnMIAU.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnMIAU.setBackground(Color.ORANGE);
+		btnMIAU.setContentAreaFilled(false);
+		btnMIAU.setOpaque(true);
+		btnMIAU.addActionListener(controller);
+		btnMIAU.setActionCommand(ActionCommands.LOGIN);
+
+		//IMPLEMENTACIÓN DE LISTENERS
+		FocusListener fl = new FocusListener() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				e.getComponent().setBackground(Color.orange);
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				e.getComponent().setBackground(SystemColor.cyan);
+			}
+		};
+		KeyListener kl = new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					controller.login();
+				}
+
+			}
+		};
+		MouseAdapter ma = new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				e.getComponent().setBackground(SystemColor.cyan);
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				e.getComponent().setBackground(Color.ORANGE);
+			}
+		};
+		
+		
+		btnMIAU.addFocusListener(fl);
+		btnMIAU.addKeyListener(kl);
+		btnMIAU.addMouseListener(ma);
+		
+
+		btnMIAU.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) { // Evita que al pulsar Entrar se quede en cyan
+				btnMIAU.setBackground(Color.ORANGE);
+			}
+		});
+		
+		
+		btnMIAU.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnMIAU.setFont(new Font("Miriam Libre", Font.PLAIN, 20));
+		btnMIAU.setBounds(10, 225, 414, 39);
+		contentPanel.add(btnMIAU);
+
+		JButton btnCancel = new JButton("CANCEL");
+		btnCancel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnCancel.setBackground(Color.ORANGE);
+		btnCancel.setContentAreaFilled(false);
+		btnCancel.setOpaque(true);
+
+		btnCancel.setActionCommand(ActionCommands.CANCEL_LOGIN);
+		btnCancel.addActionListener(controller);
+		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCancel.setFont(new Font("Miriam Libre", Font.PLAIN, 20));
+		btnCancel.setBounds(10, 275, 414, 39);
+		btnCancel.addMouseListener(ma);
+		btnCancel.addKeyListener(kl);
+		btnCancel.addFocusListener(fl);
+		contentPanel.add(btnCancel);
+
+	}
+
+}

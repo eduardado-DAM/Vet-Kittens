@@ -1,0 +1,51 @@
+# Manual de Usuario
+
+1) Hacer Login: A menos que el equipo técnico le indique lo contrario, el password del programa por defecto es:
+    - Usuario: Blas
+    - Password: 1234
+2) Una vez entra en la aplicación estas opciones:
+    A) Buscar Gatos en la base de datos (icono de gato con la lupa)
+    B) Introducir nuevos gatos en la base de datos. (icono de gato con el fichero)
+    C) Cerrar sesión
+    D) Visitar "About"
+    E) Salir de la aplicación
+
+A) Introducción de nuevos Gatos en la base de datos
+    1) Rellene todos y cada uno de los campos
+    2) Pulse Alta
+    ?) Si tiene alguna de duda de qué tipo de dato va en cada campo, deje el puntero del raton encima del nombre del campo
+        hasta que se muestre un ejemplo por pantalla
+    SALIR: Para salir al menú principal pulse en el icono de gatos y perros
+B) Búsqueda de gatos
+    1) Pulse SEARCH para ver todos los gatos guardados
+    2) Introduzca datos en las casillas para filtrar la busqueda
+    3) Pulse RESET para borrar tanto los campos como la tabla de datos
+    SALIR: Para salir al menú principal pulse en el icono de gatos y perros
+C) Cerrar sesión
+    1) Pulse sobre el icono (puerta) para cerrar sesión
+D) Información extra
+    1) Pulse sobre el botón información para conocer el equipo de desarrollo
+
+ATAJOS DE TECLADO:
+alt + f1 : búsqueda de gatos
+alt + f2 : alta de nuevos gatos
+alt + f5 : acerca de
+alt + ESCAPE: cerrar sesión
+alt + q  : salir de la aplicación
+
+Errores comunes:
+- Es necesario introducir todos y cada uno de los campos para poder dar de alta a un gato
+- La búsqueda de gatos tiene un filtro muy preciso aunque un poco difícil. Debe introducir los campos
+    de manera exacta o no obtendrá resultados. Si no encuentra un gato en particular haga una búsqueda
+    total:
+        1) Pulse RESET
+        2) Pulse SEARCH
+
+
+
+Notas:
+- Dependiendo de la elección del equipo técnico, el programa puede venir con algunos datos de prueba. Si desea eliminarlos
+    pídaselo al equipo técnico.
+
+Contacto:
+eduardado@gmail.com

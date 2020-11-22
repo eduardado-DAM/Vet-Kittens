@@ -1,0 +1,93 @@
+package data.database.mariaDBuser;
+
+import java.io.IOException;
+import java.util.Properties;
+
+/**
+ * Similar a perfiles de conexión en gestores de BD
+ * 
+ * @author Eduardo
+ *
+ */
+public class MariaDBUser {
+
+	String user;
+	String password;
+	String ip;
+	String port;
+	String dbName;
+	
+	public MariaDBUser() {
+		super();
+	}
+
+	public MariaDBUser(String user, String password, String ip, String port, String dbName) {
+		super();
+		this.user = user;
+		this.password = password;
+		this.ip = ip;
+		this.port = port;
+		this.dbName = dbName;
+	}
+
+	
+
+	public String getUser() {
+		return user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public String getPort() {
+		return port;
+	}
+
+	public String getDbName() {
+		return dbName;
+	}
+
+	public static MariaDBUser loadMariaDBUserFromProperties() {
+		Properties properties = null;
+		MariaDBUser mariaDBUser = null;
+
+		properties = new Properties();
+		try {
+			
+			properties.load(MariaDBUser.class.getResourceAsStream("../config/config.properties"));
+
+			String user = properties.getProperty("ddbb.maria.user");
+			String password = properties.getProperty("ddbb.maria.password");
+			String ip = properties.getProperty("ddbb.maria.host");
+			String port = properties.getProperty("ddbb.maria.port");
+			String dbName = properties.getProperty("ddbb.maria.dbName");
+			
+			mariaDBUser = new MariaDBUser(user, password, ip, port, dbName);
+			
+		} catch (IOException e) {
+			System.err.println("Error al cargar el archivo config.properties");
+			e.printStackTrace();
+		}
+		
+		return mariaDBUser;
+
+	}
+	
+	
+
+	public void loadDefaultUser() {
+		user = "eduardado";
+		password = "eduardado";
+		ip = "localhost";
+		port = "3306";
+		dbName = "edusoft";
+	}
+
+	
+
+}

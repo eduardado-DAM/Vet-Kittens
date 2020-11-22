@@ -1,0 +1,24 @@
+Manual Tecnico
+-----------------
+
+1) Instalar un Sistema Gestor de Base de Datos MySQL
+2) Ejecutar el script edusoftDataBaseDemo.sql que encontrara en la carpeta donde instalo el programa
+    2a) Si quiere modificar el usuario de acceso por defecto modique las cadenas de la lína 46 del script por el usuario que desee
+        Blas
+        1234
+    2b) El script carga algunos datos de demostracion para los usuarios, se prefiere hacer una instalación sin dichos datos 
+        utilice el script edusoftDataBaseLimpio.sql
+3) Para configurar las credenciales de acceso a la base de datos modifique el archivo config.properties que encontrará en la carpeta
+    donde instalase el programa
+
+IMPORTANTE:
+- Para que el programa funcione correctamente el archivo config.properties debe encontrarse en la misma carpeta donde se encuentra
+    el archivo ejecutable del programa (.exe)
+- Antes de modificar los archivos recomendamos que haga una copia de seguridad
+    * config.properties 
+    * edusoftDataBaseDemo.sql
+    * edusoftDataBaseLimpio.sql
+
+Cualquier incidencia: eduardado@gmail.com
+
+Disfrute el software gratuíto que hemos creado con tanta ilusion :)
